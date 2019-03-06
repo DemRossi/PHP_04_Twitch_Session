@@ -17,9 +17,9 @@
     if( canLogIn($username, $password) ){
       //succes
 
-      $salt = "d9bvl2whd6kvjldw78cd";
-      $cookieVal = $username . "," . md5($username . $salt);
-      setcookie("loggedIn", $cookieVal, time()+60*60*24*30);
+      session_start();
+      $_SESSION['User'] = true;
+      $_SESSION['Username'] = $username;
       header("Location: index.php");
 
     }else{

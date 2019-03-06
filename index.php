@@ -1,21 +1,12 @@
 <?php
-    $salt = "d9bvl2whd6kvjldw78cd";
+  session_start();
 
-    if ( isset($_COOKIE['loggedIn']) ){
-        
-        $cookie = $_COOKIE['loggedIn'];
-        $arrCookie = explode(",", $cookie);
-
-        if( md5($arrCookie[0].$salt) == $arrCookie[1] ){
-            //is logged in
-        }else{
-            //send back
-            header("Location: login.php");
-        }
-    }else{
-         //send back
-         header("Location: login.php");
-    }
+  if( isset( $_SESSION['User'] ) ){
+    //User is logged in
+  }else{
+    //User not logged in
+    header('Location: login.php');
+  }
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +24,7 @@
     <a href="#">Try prime</a>
     <a href="#" class="loggedIn">
       <div class="user--avatar"><img src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=ddcb7ec744fc63472f2d9e19362aa387" alt=""></div>
-      <h3 class="user--name"><?php echo $arrCookie[0]; ?></h3>
+      <h3 class="user--name"><?php echo $_SESSION['Username']; ?></h3>
       <span class="user--status">Watching dakotaz</span>
     </a>
     <a href="logout">Log out?</a>
