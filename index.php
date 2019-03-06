@@ -27,7 +27,7 @@
       <h3 class="user--name"><?php echo $_SESSION['Username']; ?></h3>
       <span class="user--status">Watching dakotaz</span>
     </a>
-    <a href="logout">Log out?</a>
+    <a href="logout.php">Log out?</a>
   </nav>    
 </header>
 
